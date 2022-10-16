@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web lab1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="controller.js"></script>
+</head>
+<body>
+
+<table id="header_table" class="main_table">
+    <tr><td class="header">К.Кравцов P32101 вариант 1310</td></tr>
+    <tr><td><img src="areas.png" width="420" alt="areas"></td></tr>
+</table>
+
+<form class="form" onsubmit="return validateForm();" method="get" action="server.php">
+    <table id="form_table">
+        <tr><td><label for="radius_checkboxes">Радиус R</label></td></tr>
+        <tr>
+            <td id="radius_checkboxes">
+                <input id="r_1" name="radius" class="radius_checkbox" type="checkbox" value="1" checked=""
+                       onclick="disableAllRadiusCheckboxesExcept(this)">
+                <label for="r_1">1</label>
+
+                <input id="r_1.5" name="radius" class="radius_checkbox" type="checkbox" value="1.5"
+                       onclick="disableAllRadiusCheckboxesExcept(this)">
+                <label for="r_1.5">1.5</label>
+
+                <input id="r_2" name="radius" class="radius_checkbox" type="checkbox" value="2"
+                       onclick="disableAllRadiusCheckboxesExcept(this)">
+                <label for="r_2">2</label>
+
+                <input id="r_2.5" name="radius" class="radius_checkbox" type="checkbox" value="2.5"
+                       onclick="disableAllRadiusCheckboxesExcept(this)">
+                <label for="r_2.5">2.5</label>
+
+                <input id="r_3" name="radius" class="radius_checkbox" type="checkbox" value="3"
+                       onclick="disableAllRadiusCheckboxesExcept(this)">
+                <label for="r_3">3</label>
+            </td>
+        </tr>
+
+        <tr><td><label for="x_value">Координата X</label></td></tr>
+        <tr>
+            <td><input id="x_value" name="x" type="number" value="0" readonly></td>
+            <td id="x_buttons">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="-3">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="-2">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="-1">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="0">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="1">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="2">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="3">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="4">
+                <input type="button" class="x_button" onclick="setX(this.value)" value="5">
+            </td>
+        </tr>
+
+        <tr><td><label for="y">Координата Y</label></td></tr>
+        <tr><td><input id="y" class="y" name="y" type="text" required=""></td></tr>
+
+        <tr><td><input id="submit" type="submit" value="Отправить"></td></tr>
+    </table>
+</form>
+
+<table id="results_table" class="main_table">
+    <thead>
+    <tr id="results_table_head">
+        <td>Время</td><td>Затраты</td><td>X</td><td>Y</td><td>R</td><td>Результат</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+</body>
+</html>

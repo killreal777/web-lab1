@@ -1,0 +1,13 @@
+.main_table {
+    width: 100%;
+}
+
+.header {
+    font-family: fantasy;
+    font-size: 18pt;
+    color: #3b3b3b;
+}
+
+.x_button {
+    color: red;
+}
