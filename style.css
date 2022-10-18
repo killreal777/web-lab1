@@ -11,3 +11,8 @@
 .x_button {
     color: red;
 }
+
+svg {
+    stroke: #363636;
+    fill: #363636;
+}

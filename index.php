@@ -9,7 +9,50 @@
 
 <table id="header_table" class="main_table">
     <tr><td class="header">К.Кравцов P32101 вариант 1310</td></tr>
-    <tr><td><img src="areas.png" width="420" alt="areas"></td></tr>
+    <tr>
+        <td>
+            <svg width="300" height="300">
+                <!-- Оси координат -->
+                <line x1="1" x2="300" y1="150" y2="150" ></line>
+                <line x1="150" x2="150" y1="0" y2="300"></line>
+                <!-- Стрелки к осям -->
+                <polygon points="150,0 145,15 155,15" stroke="black"></polygon>
+                <polygon points="300,150 285,145 285,155" stroke="black"></polygon>
+                <!-- Метки для значений R на оси X -->
+                <circle cx="50" cy="150" r="3" fill="black"></circle>
+                <circle cx="100" cy="150" r="3" fill="black"></circle>
+                <circle cx="150" cy="150" r="3" fill="black"></circle>
+                <circle cx="200" cy="150" r="3" fill="black"></circle>
+                <circle cx="250" cy="150" r="3" fill="black"></circle>
+                <!-- Метки для значений R на оси Y -->
+                <circle cx="150" cy="50" r="3" fill="black"></circle>
+                <circle cx="150" cy="100" r="3" fill="black"></circle>
+                <circle cx="150" cy="200" r="3" fill="black"></circle>
+                <circle cx="150" cy="250" r="3" fill="black"></circle>
+                <!-- Прямоугольник -->
+                <polygon stroke="black" fill="blue" fill-opacity="0.2" points="200,150 200,250 150,250 150,150"></polygon>
+                <!-- Треугольник -->
+                <polygon stroke="black" fill="blue" fill-opacity="0.2" points="200,150 150,150 150,100"></polygon>
+                <!-- Четверть эллипса -->
+                <path stroke="black" fill="blue" fill-opacity="0.2" d="M50,150 A100,100 90 0,1 150,50 L 150,150 Z"></path>
+                <!-- Подписи к осям -->
+                <text x="285" y="140">X</text>
+                <text x="160" y="15">Y</text>
+                <!-- Значения R на оси X -->
+                <text x="40" y="140">-R</text>
+                <text x="85" y="140">-R/2</text>
+                <text x="190" y="140">R/2</text>
+                <text x="245" y="140">R</text>
+                <!-- Значения R на оси Y -->
+                <text x="160" y="52.5">R</text>
+                <text x="160" y="102.5">R/2</text>
+                <text x="160" y="202.5">-R/2</text>
+                <text x="160" y="252.5">-R</text>
+
+                <circle id="circle" cx="150" cy="150" r="3" fill="red" stroke-width="0"></circle>
+            </svg>
+        </td>
+    </tr>
 </table>
 
 
