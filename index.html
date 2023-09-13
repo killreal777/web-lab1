@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web1 Form</title>
+
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script defer src="controller.js"></script>
+
+    <style>
+        html {
+            height: 100%;
+            text-align: center;
+            width: 960px;
+            margin: auto;
+
+            font-family: "Segoe UI", serif;
+            font-size: 20pt;
+            color: #222222;
+            background-color: #DDDDDD;
+        }
+
+        table {
+            width: 100%;
+        }
+
+
+        .container {
+            border-width: 0;
+            border-spacing: 10pt;
+        }
+
+        .header {
+            background-color: #EEEEEE;
+            border-radius: 40px;
+            height: 80pt;
+            font-family: "Segoe UI Black", serif;
+            font-size: 28pt;
+        }
+
+
+        .left-block {
+            background-color: #EEEEEE;
+            border-radius: 40px;
+            height: 350px;
+            width: 350px;
+        }
+
+        .right-block {
+            background-color: #EEEEEE;
+            border-radius: 40px;
+        }
+
+
+        .line {
+            stroke: black;
+        }
+
+        .area {
+            fill: #d6d6f0;
+        }
+
+        svg circle {
+            fill: black;
+        }
+
+        svg text {
+            font-size: 16px;
+        }
+
+
+        form {
+            & tr {
+                height: 40pt
+            }
+        }
+
+        label {
+            line-height: 35pt;
+            font-family: "Segoe UI Semibold", serif;
+        }
+
+        input {
+            font-family: "Segoe UI", serif;
+            font-size: 16pt;
+        }
+
+
+        .variant {
+            color: #DDDDDD;
+            margin-left: 2%;
+            margin-right: 2%;
+        }
+
+
+        #y-label-row ~ tr > td {
+            width: 10%;
+        }
+
+        input[type="submit"],
+        input[type="text"] {
+            background-color: #F8F8F8;
+            color: #222222;
+            border-radius: 5px;
+            border-width: 2px;
+            border-color: #222222;
+            border-style: solid;
+            cursor: pointer;
+        }
+
+        .y-label {
+            padding-top: 3%;
+        }
+
+        input:hover {
+            background-color: #FFFFFF;
+        }
+
+        input:focus {
+
+            background-color: #EEEEEE;
+        }
+
+        input:active {
+            border-width: 2px;
+            border-color: #222222;
+        }
+
+        input[type="text"]::placeholder {
+            color: #A0A0A0;
+        }
+
+        #err-msg {
+            height: 10px;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+
+<body>
+<table class="container">
+
+    <tr>
+        <td class="header" colspan="2">
+            <b class="variant">2199</b>Кирилл Кравцов P3211 - Web1<b class="variant">2199</b>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="left-block">
+            <svg width="300" height="300">
+
+                <!-- rectangle, triangle, quarter circle -->
+                <polygon points="150,200 150,150 50,150 50,200" class="area"></polygon>
+                <polygon points="200,150 150,150 150,200" class="area"></polygon>
+                <path d="M50,150 A100,100 90 0,1 150,50 L 150,150 Z" class="area"></path>
+
+                <!-- axes Ox and Oy -->
+                <line x1="15"  x2="275" y1="150" y2="150" class="line"></line>
+                <line x1="150" x2="150" y1="25"  y2="285" class="line"></line>
+
+                <!-- arrows for axes Ox and Oy -->
+                <polygon points="290,150 275,146 275,154" class="arrow"></polygon>
+                <polygon points="150,10  146,25  154,25"  class="arrow"></polygon>
+
+                <!-- dots on axis Ox -->
+                <circle cx="50"  cy="150" r="3"></circle>
+                <circle cx="100" cy="150" r="3"></circle>
+                <circle cx="200" cy="150" r="3"></circle>
+                <circle cx="250" cy="150" r="3"></circle>
+
+                <!-- dots on axis Oy -->
+                <circle cx="150" cy="50"  r="3"></circle>
+                <circle cx="150" cy="100" r="3"></circle>
+                <circle cx="150" cy="200" r="3"></circle>
+                <circle cx="150" cy="250" r="3"></circle>
+
+                <!-- center dot -->
+                <circle cx="150" cy="150" r="3"></circle>
+
+                <!-- axes labels -->
+                <text x="285" y="140">X</text>
+                <text x="160" y="15">Y</text>
+
+                <!-- r values on oX axis -->
+                <text x="40" y="140">-R</text>
+                <text x="85" y="140">-R/2</text>
+                <text x="190" y="140">R/2</text>
+                <text x="245" y="140">R</text>
+
+                <!-- r values on oY axis -->
+                <text x="160" y="52.5">R</text>
+                <text x="160" y="102.5">R/2</text>
+                <text x="160" y="202.5">-R/2</text>
+                <text x="160" y="252.5">-R</text>
+
+            </svg>
+        </td>
+
+        <td class="right-block">
+            <form method="get" action="script.php">
+                <table class="form-table">
+                    <tr>
+                        <td>
+                            <label for="r">Радиус</label><br>
+                            <input id="r" type="text" name="r" placeholder="(2 ... 5)" class="text-field"><br>
+                        </td>
+                        <td>
+                            <label for="x">Координата X</label><br>
+                            <input id="x" type="text" name="x" placeholder="(-3 ... 5)" class="text-field"><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <table>
+                                <tr id="y-label-row">
+                                    <td colspan="9" class="y-label"><label>Координата Y</label></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input id="y-3" type="radio" name="y" value="-3"><br>
+                                        <label for="y-3">-3</label>
+                                    </td>
+                                    <td>
+                                        <input id="y-2" type="radio" name="y" value="-2"><br>
+                                        <label for="y-2">-2</label>
+                                    </td>
+                                    <td>
+                                        <input id="y-1" type="radio" name="y" value="-1"><br>
+                                        <label for="y-1">-1</label>
+                                    </td>
+                                    <td>
+                                        <input id="y+0" type="radio" name="y" value="0"><br>
+                                        <label for="y+0">0</label>
+                                    </td>
+                                    <td>
+                                        <input id="y+1" type="radio" name="y" value="1"><br>
+                                        <label for="y+1">1</label>
+                                    </td>
+                                    <td>
+                                        <input id="y+2" type="radio" name="y" value="2"><br>
+                                        <label for="y+2">2</label>
+                                    </td>
+                                    <td>
+                                        <input id="y+3" type="radio" name="y" value="3"><br>
+                                        <label for="y+3">3</label>
+                                    </td>
+                                    <td>
+                                        <input id="y+4" type="radio" name="y" value="4"><br>
+                                        <label for="y+4">4</label>
+                                    </td>
+                                    <td>
+                                        <input id="y+5" type="radio" name="y" value="5"><br>
+                                        <label for="y+5">5</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input id="submit" type="submit" value="Отправить"><br>
+                            <span id="err-msg"></span>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+    </tr>
+
+</table>
+</body>
+
+</html>
