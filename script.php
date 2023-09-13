@@ -73,13 +73,13 @@ function isInputValid(): bool
 function isRValid($r): bool
 {
     $min = 2; $max = 5;
-    return is_numeric($r) && $r >= $min && $r <= $max;
+    return is_numeric($r) && $r > $min && $r < $max;
 }
 
 function isXValid($x): bool
 {
     $min = -3; $max = 5;
-    return is_numeric($x) && $x >= $min && $x <= $max;
+    return is_numeric($x) && $x > $min && $x < $max;
 }
 
 function isYValid($y): bool
