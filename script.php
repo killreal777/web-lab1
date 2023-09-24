@@ -14,13 +14,7 @@ $currentTime = currentTime();
 $isHit = isHit($r, $x, $y) ? "Попал" : "Мимо";
 $scriptRunTime = (hrtime(true) - $startTime) / 1000000;
 
-$resultTableRow = createHtmlTableRow($currentTime, $scriptRunTime, $x, $y, $r, $isHit);
-
-if (isset($_COOKIE["resultsArray"])) {
-    $resultsArray = json_decode($_COOKIE["resultsArray"], true);
-}
-$resultsArray[] = $resultTableRow;
-setcookie("resultsArray", json_encode($resultsArray));
+echo encodeJson($currentTime, $scriptRunTime, $x, $y, $r, $isHit);
 
 
 function currentTime(): string
@@ -31,9 +25,18 @@ function currentTime(): string
 }
 
 
-function createHtmlTableRow($currentTime, $scriptRunTime, $x, $y, $r, $isHit): string
+function encodeJson($currentTime, $scriptRunTime, $x, $y, $r, $isHit)
 {
-    return "<tr><td>$currentTime</td><td>$scriptRunTime</td><td>$x</td><td>$y</td><td>$r</td><td>$isHit</td></tr>";
+    $dataArray = array(
+        "currentTime" => $currentTime,
+        "scriptRunTime" => $scriptRunTime,
+        "x" => $x,
+        "y" => $y,
+        "r" => $r,
+        "isHit" => $isHit,
+    );
+
+    return json_encode($dataArray);
 }
 
 
@@ -109,44 +112,3 @@ function isHitRectangle($r, $x, $y): bool
     return ($x <= 0) && ($x >= -$r) && ($y <= 0) && ($y >= -$r/2);
 }
 
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Web1 Results</title>
-    <style>
-        html {
-            color: #222222;
-            background-color: #EEEEEE;
-            text-align: center;
-            font-family: "Segoe UI", serif;
-            font-size: 20pt;
-        }
-        table {
-            height: 100%;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-<table>
-    <thead>
-    <tr>
-        <td>Время</td>
-        <td>Затраты, ms</td>
-        <td>X</td>
-        <td>Y</td>
-        <td>R</td>
-        <td>Результат</td>
-    </tr>
-    </thead>
-    <tbody>
-        <?php foreach (array_reverse($resultsArray) as $row) echo $row ?>
-    </tbody>
-</table>
-</body>
-
-</html>

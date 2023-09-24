@@ -3,153 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Web1 Form</title>
+    <title>Web1</title>
 
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script defer src="controller.js"></script>
 
-    <style>
-        html {
-            height: 100%;
-            text-align: center;
-            width: 960px;
-            margin: auto;
-
-            font-family: "Segoe UI", serif;
-            font-size: 20pt;
-            color: #222222;
-            background-color: #DDDDDD;
-        }
-
-        table {
-            width: 100%;
-        }
-
-
-        .container {
-            border-width: 0;
-            border-spacing: 10pt;
-        }
-
-        .header {
-            background-color: #EEEEEE;
-            border-radius: 40px;
-            height: 80pt;
-            font-family: "Segoe UI Black", serif;
-            font-size: 28pt;
-        }
-
-
-        .left-block {
-            background-color: #EEEEEE;
-            border-radius: 40px;
-            height: 350px;
-            width: 350px;
-        }
-
-        .right-block {
-            background-color: #EEEEEE;
-            border-radius: 40px;
-        }
-
-
-        .line {
-            stroke: black;
-        }
-
-        .area {
-            fill: #d6d6f0;
-        }
-
-        svg circle {
-            fill: black;
-        }
-
-        svg text {
-            font-size: 16px;
-        }
-
-
-        form {
-            & tr {
-                height: 40pt
-            }
-        }
-
-        label {
-            line-height: 35pt;
-            font-family: "Segoe UI Semibold", serif;
-        }
-
-        input {
-            font-family: "Segoe UI", serif;
-            font-size: 16pt;
-        }
-
-
-        .variant {
-            color: #DDDDDD;
-            margin-left: 2%;
-            margin-right: 2%;
-        }
-
-
-        #y-label-row ~ tr > td {
-            width: 10%;
-        }
-
-        input[type="submit"],
-        input[type="text"] {
-            background-color: #F8F8F8;
-            color: #222222;
-            border-radius: 5px;
-            border-width: 2px;
-            border-color: #222222;
-            border-style: solid;
-            cursor: pointer;
-        }
-
-        .y-label {
-            padding-top: 3%;
-        }
-
-        input:hover {
-            background-color: #FFFFFF;
-        }
-
-        input:focus {
-
-            background-color: #EEEEEE;
-        }
-
-        input:active {
-            border-width: 2px;
-            border-color: #222222;
-        }
-
-        input[type="text"]::placeholder {
-            color: #A0A0A0;
-        }
-
-        #err-msg {
-            height: 10px;
-            font-size: 18px;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
 <table class="container">
 
     <tr>
-        <td class="header" colspan="2">
+        <td class="header block" colspan="2">
             <b class="variant">2199</b>Кирилл Кравцов P3211 - Web1<b class="variant">2199</b>
         </td>
     </tr>
 
     <tr>
-        <td class="left-block">
+        <td class="left-block block">
             <svg width="300" height="300">
 
                 <!-- rectangle, triangle, quarter circle -->
@@ -166,19 +38,19 @@
                 <polygon points="150,10  146,25  154,25"  class="arrow"></polygon>
 
                 <!-- dots on axis Ox -->
-                <circle cx="50"  cy="150" r="3"></circle>
-                <circle cx="100" cy="150" r="3"></circle>
-                <circle cx="200" cy="150" r="3"></circle>
-                <circle cx="250" cy="150" r="3"></circle>
+                <circle cx="50"  cy="150" r="2"></circle>
+                <circle cx="100" cy="150" r="2"></circle>
+                <circle cx="200" cy="150" r="2"></circle>
+                <circle cx="250" cy="150" r="2"></circle>
 
                 <!-- dots on axis Oy -->
-                <circle cx="150" cy="50"  r="3"></circle>
-                <circle cx="150" cy="100" r="3"></circle>
-                <circle cx="150" cy="200" r="3"></circle>
-                <circle cx="150" cy="250" r="3"></circle>
+                <circle cx="150" cy="50"  r="2"></circle>
+                <circle cx="150" cy="100" r="2"></circle>
+                <circle cx="150" cy="200" r="2"></circle>
+                <circle cx="150" cy="250" r="2"></circle>
 
                 <!-- center dot -->
-                <circle cx="150" cy="150" r="3"></circle>
+                <circle cx="150" cy="150" r="2"></circle>
 
                 <!-- axes labels -->
                 <text x="285" y="140">X</text>
@@ -196,10 +68,13 @@
                 <text x="160" y="202.5">-R/2</text>
                 <text x="160" y="252.5">-R</text>
 
+                <!-- hit dot -->
+                <circle cx="150" cy="150" r="2.5" id="hit-dot"></circle>
+
             </svg>
         </td>
 
-        <td class="right-block">
+        <td class="right-block block">
             <form method="get" action="script.php">
                 <table class="form-table">
                     <tr>
@@ -267,6 +142,25 @@
                     </tr>
                 </table>
             </form>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="results-block block" colspan="2">
+            <table id="results-table">
+                <thead>
+                <tr>
+                    <td>Время</td>
+                    <td>Затраты, ms</td>
+                    <td>X</td>
+                    <td>Y</td>
+                    <td>R</td>
+                    <td>Результат</td>
+                </tr>
+                </thead>
+                <tbody id="results-table-body">
+                </tbody>
+            </table>
         </td>
     </tr>
 

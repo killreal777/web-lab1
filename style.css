@@ -1,0 +1,130 @@
+/* general */
+
+html {
+    height: 100%;
+    text-align: center;
+    width: 949px;
+    margin: auto;
+    font-family: "Segoe UI", serif;
+    font-size: 20pt;
+    color: #222222;
+    background-color: #EEEEEE;
+}
+
+table {
+    width: 100%;
+}
+
+.container {
+    border-width: 0;
+    border-spacing: 10pt;
+}
+
+
+/* blocks */
+
+.block {
+    box-shadow: 0 0 12px rgba(128, 128, 128, 0.2);
+    background-color: #EEEEEE;
+    border-radius: 40px;
+}
+
+.header {
+    height: 80pt;
+    font-family: "Segoe UI Black", serif;
+    font-size: 28pt;
+}
+
+.left-block {
+    height: 350px;
+    width: 350px;
+}
+
+
+/* svg */
+
+.line {
+    stroke: black;
+}
+
+.area {
+    fill: #d6d6f0;
+}
+
+svg circle {
+    fill: black;
+}
+
+svg text {
+    font-size: 16px;
+}
+
+
+/* form */
+
+form {
+    & tr {
+        height: 40pt
+    }
+}
+
+label {
+    line-height: 35pt;
+    font-family: "Segoe UI Semibold", serif;
+}
+
+input {
+    font-family: "Segoe UI", serif;
+    font-size: 16pt;
+}
+
+
+.variant {
+    color: #e3e3e3;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+
+#y-label-row ~ tr > td {
+    width: 10%;
+}
+
+input[type="submit"],
+input[type="text"] {
+    background-color: #F8F8F8;
+    color: #222222;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #222222;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.y-label {
+    padding-top: 3%;
+}
+
+input:hover {
+    background-color: #FFFFFF;
+}
+
+input:focus {
+
+    background-color: #EEEEEE;
+}
+
+input:active {
+    border-width: 2px;
+    border-color: #222222;
+}
+
+input[type="text"]::placeholder {
+    color: #A0A0A0;
+}
+
+#err-msg {
+    height: 10px;
+    font-size: 18px;
+}
+
