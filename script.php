@@ -1,20 +1,60 @@
 <?php
 
-$startTime = hrtime(true);
+checkRequestType();
 
-validateRequest();
 
-$r = (float) $_GET["r"];
-$x = (float) $_GET["x"];
-$y = (float) $_GET["y"];
+function handleInitialRequest() : void
+{
+    if (isset($_COOKIE["resultsArray"])) {
+        $resultsArray = json_decode($_COOKIE["resultsArray"], true);
+        foreach (array_reverse($resultsArray) as $row) echo $row;
+    }
+}
 
-$y = str_ireplace(",", ".", $y);
+function handleUserRequest() : void
+{
+    $startTime = hrtime(true);
 
-$currentTime = currentTime();
-$isHit = isHit($r, $x, $y) ? "Попал" : "Мимо";
-$scriptRunTime = (hrtime(true) - $startTime) / 1000000;
+    validateRequest();
 
-echo encodeJson($currentTime, $scriptRunTime, $x, $y, $r, $isHit);
+    $r = (float) $_GET["r"];
+    $x = (float) $_GET["x"];
+    $y = (float) $_GET["y"];
+
+    $y = str_ireplace(",", ".", $y);
+
+    $currentTime = currentTime();
+    $isHit = isHit($r, $x, $y) ? "Попал" : "Мимо";
+    $scriptRunTime = (hrtime(true) - $startTime) / 1000000;
+
+
+    $resultTableRow = createHtmlTableRow($currentTime, $scriptRunTime, $x, $y, $r, $isHit);
+    if (isset($_COOKIE["resultsArray"])) {
+        $resultsArray = json_decode($_COOKIE["resultsArray"], true);
+    }
+    $resultsArray[] = $resultTableRow;
+    setcookie("resultsArray", json_encode($resultsArray));
+
+
+    echo encodeJson($currentTime, $scriptRunTime, $x, $y, $r, $isHit);
+}
+
+function createHtmlTableRow($currentTime, $scriptRunTime, $x, $y, $r, $isHit): string
+{
+    return "<tr><td>$currentTime</td><td>$scriptRunTime</td><td>$x</td><td>$y</td><td>$r</td><td>$isHit</td></tr>";
+}
+
+
+function checkRequestType()
+{
+    $requestType = $_GET["request-type"];
+    if ($requestType == "user-request")
+        handleUserRequest();
+    else if ($requestType == "initial-request")
+        handleInitialRequest();
+    else
+        echo "unknown request";
+}
 
 
 function currentTime(): string

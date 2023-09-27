@@ -75,7 +75,8 @@
         </td>
 
         <td class="right-block block">
-            <form method="get" action="script.php">
+            <form method="get" action="script.php" id="user-request-form">
+                <input type="hidden" name="request-type" value="user-request">
                 <table class="form-table">
                     <tr>
                         <td>
@@ -165,6 +166,11 @@
     </tr>
 
 </table>
+
+<form id="initial-request-form">
+    <input type="hidden" name="request-type" value="initial-request">
+</form>
+
 </body>
 
 </html>

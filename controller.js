@@ -1,5 +1,16 @@
-let form = $("form");
+let form = $("#user-request-form");
+let initForm = $("#initial-request-form");
 let errMsg = $("#err-msg");
+
+
+$.ajax({
+    type: "GET",
+    url: "script.php",
+    data: initForm.serialize(),
+    success: function(data) {
+        $("#results-table-body").prepend(data);
+    }
+})
 
 
 form.submit(function(event) {
