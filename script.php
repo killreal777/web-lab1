@@ -4,9 +4,9 @@ $startTime = hrtime(true);
 
 validateRequest();
 
-$r = $_GET["r"];
-$x = $_GET["x"];
-$y = $_GET["y"];
+$r = (float) $_GET["r"];
+$x = (float) $_GET["x"];
+$y = (float) $_GET["y"];
 
 $y = str_ireplace(",", ".", $y);
 
