@@ -6,7 +6,9 @@
     <title>Web1</title>
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script defer src="controller.js"></script>
+    <script type="module" defer src="js/configuration.js"></script>
+    <script type="module" defer src="js/requests.js"></script>
+    <script type="module" defer src="js/validators.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -138,7 +140,7 @@
                     <tr>
                         <td colspan="2">
                             <input id="submit" type="submit" value="Отправить">
-                            <input id="clear" type="button" value="Очистить" onclick="clearRequest()"><br>
+                            <input id="clear" type="button" value="Очистить"><br>
                             <span id="err-msg"></span>
                         </td>
                     </tr>
@@ -168,13 +170,6 @@
 
 </table>
 
-<form id="initial-request-form">
-    <input type="hidden" name="request-type" value="initial-request">
-</form>
-
-<form id="clear-request-form">
-    <input type="hidden" name="request-type" value="clear-request">
-</form>
 
 </body>
 
