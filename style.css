@@ -91,6 +91,7 @@ input {
 }
 
 input[type="submit"],
+input[type="button"],
 input[type="text"] {
     background-color: #F8F8F8;
     color: #222222;

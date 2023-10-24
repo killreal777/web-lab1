@@ -137,7 +137,8 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <input id="submit" type="submit" value="Отправить"><br>
+                            <input id="submit" type="submit" value="Отправить">
+                            <input id="clear" type="button" value="Очистить" onclick="clearRequest()"><br>
                             <span id="err-msg"></span>
                         </td>
                     </tr>
@@ -169,6 +170,10 @@
 
 <form id="initial-request-form">
     <input type="hidden" name="request-type" value="initial-request">
+</form>
+
+<form id="clear-request-form">
+    <input type="hidden" name="request-type" value="clear-request">
 </form>
 
 </body>

@@ -1,5 +1,6 @@
 let form = $("#user-request-form");
 let initForm = $("#initial-request-form");
+let clearForm = $("#clear-request-form");
 let errMsg = $("#err-msg");
 
 
@@ -10,8 +11,7 @@ $.ajax({
     success: function(data) {
         $("#results-table-body").prepend(data);
     }
-})
-
+});
 
 form.submit(function(event) {
     event.preventDefault();
@@ -21,6 +21,24 @@ form.submit(function(event) {
 
     submitForm();
 });
+
+
+
+
+function clearRequest() {
+    $("#clear")
+    $.ajax({
+        type: "GET",
+        url: "script.php",
+        data: clearForm.serialize(),
+        success: function() {
+            $("#results-table-body").replaceWith("");
+            location.reload();
+        }
+    });
+}
+
+
 
 
 function submitForm() {

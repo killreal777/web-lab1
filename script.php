@@ -2,6 +2,10 @@
 
 checkRequestType();
 
+function handleClearRequest() : void
+{
+    setcookie("resultsArray", json_encode(array()));
+}
 
 function handleInitialRequest() : void
 {
@@ -52,6 +56,8 @@ function checkRequestType()
         handleUserRequest();
     else if ($requestType == "initial-request")
         handleInitialRequest();
+    else if ($requestType == "clear-request")
+        handleClearRequest();
     else
         echo "unknown request";
 }
